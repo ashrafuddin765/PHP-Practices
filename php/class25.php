@@ -44,7 +44,7 @@
 	$x = 15;
 	$y = 10;
 
-	function sum(){
+	function sum(){ 
 		$GLOBALS['z'] = $GLOBALS['x']+$GLOBALS['y'];
 	}
 
