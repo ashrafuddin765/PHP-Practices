@@ -39,74 +39,64 @@
             <hr>
             <h4>PHP Form Validation</h4>
             <hr>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
                 <table>
                     <tr>
                         <td>Name </td>
-                        <td>
-                            <input type="text" name="name">
-                        </td>
+                        <td><input type="text" name="name"></td>
                     </tr>
                     <tr>
                         <td>Email </td>
-                        <td>
-                            <input type="text" name="email">
-                        </td>
+                        <td><input type="text" name="email"></td>
                     </tr>
                     <tr>
                         <td>Website </td>
+                        <td><input type="text" name="website"></td>
+                    </tr>
+                    <tr>
+                        <td>Gendear </td>
                         <td>
-                            <input type="text" name="website">
+                            <input type="radio" name="gender" value="Male">Male
+                            <input type="radio" name="gender" value="Female">Female
                         </td>
                     </tr>
                     <tr>
-                        <td>Gender </td>
-                        <td>
-                            <input type="radio" name="gender" value="male"> Male
-                            <input type="radio" name="gender" value="female"> FeMale
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Comments </td>
-                        <td>
-                            <textarea name="comment" rows="5" cols="50"></textarea>
-                        </td>
+                        <td>Comment</td>
+                        <td><textarea name="comment" cols="30" rows="5"></textarea></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td>
-                            <button type="submit" name="submit">Submit</button>
-                        </td>
+                        <td><button type="submit" name="submit"> Submit</button></td>
                     </tr>
                 </table>
             </form>
             <?php
-                $name = $email = $website = $comment = $gender ='';
-                if($_SERVER["REQUEST_METHOD"] == "POST"){
-                   $name =      validate($_POST["name"]);
-                   $email =     validate($_POST["email"]);
-                   $website =   validate($_POST["website"]);
-                   $gender =    validate($_POST["gender"]);
-                   $comment =   validate($_POST["comment"]);
-                 
-                    echo 'name : '.$name.'</br>';
-                    echo 'email : '.$email.'</br>'; 
-                    echo 'website : '.$website.'</br>';
-                    echo 'gender : '.$gender.'</br>'; 
-                    echo 'comment : '.$comment.'</br>';
+            $name = $email = $website = $comment ='';
+
+              if($_SERVER["REQUEST_METHOD"] == "POST" ){
+                $name       = validate($_POST['name']);
+                $email      = validate($_POST['email']);
+                $website    = validate($_POST['website']);
+                $gender     = validate($_POST['gender']);
+                $comment    = validate($_POST['comment']);
 
 
-                    var_dump($gender);
-                } 
 
-                function validate($data){
-                    $data = trim($data);
-                    $data = stripslashes($data);
-                    $data = htmlspecialchars($data);
+                echo 'name : ' . $name.'<br>';
+                echo 'email : ' . $email.'<br>';
+                echo 'website : ' . $website.'<br>';
+                echo 'gender : ' . $gender.'<br>';
+                echo 'comment : ' . $comment.'<br>';
 
-                    return $data;
-                }  
+              }
 
+              function validate($value){
+                trim($value);
+                htmlspecialchars($value);
+                stripslashes($value);
+
+                return $value;
+              }
 
             ?>
         </section>
