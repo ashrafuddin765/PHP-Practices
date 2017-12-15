@@ -22,7 +22,7 @@
 
 
 	}
- 
+
 
 	$personeOne = new person;
 ?>
